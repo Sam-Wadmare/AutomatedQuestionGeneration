@@ -1,34 +1,70 @@
-# AutomatedQuetionGeneration
-# 🤖 Smart Aptitude Question Generator
+# AutomatedQuestionGeneration
 
-An **AI-powered web app** that automatically generates aptitude questions using **Natural Language Processing (NLP)** and a **Transformer model (T5)**.  
-This project combines **Flask**, **Hugging Face Transformers**, and **Pandas** to dynamically create new questions from an existing dataset.
+## 🤖 Smart Aptitude Question Generator
 
----
+An AI-powered Flask web app that generates aptitude questions using a pretrained Hugging Face T5 model and a local CSV dataset.
 
 ## 🚀 Features
 
-- 🧠 **AI-Generated Questions** – Uses a pretrained Transformer (T5) model to generate fresh questions from text.  
-- 📚 **CSV Dataset Integration** – Reads existing aptitude questions, options, and answers from a CSV file.  
-- ⚙️ **Flask Backend** – Provides an API endpoint (`/generate`) that dynamically returns a new AI question each time.  
-- 💻 **Interactive Frontend** – Displays the generated question and options on a simple web page.  
-
----
+- AI-generated question text from existing aptitude prompts.
+- CSV-backed options and answers.
+- Flask backend with a `/generate` API endpoint.
+- Minimal browser UI with loading/error states.
 
 ## 🛠️ Tech Stack
 
-- **Python 3.10+**
-- **Flask** – Web framework  
-- **Transformers (Hugging Face)** – For NLP model  
-- **Torch** – Model backend  
-- **Pandas** – For CSV handling  
-- **SentencePiece** – Required by T5 tokenizer  
+- Python 3.10+
+- Flask
+- Transformers (Hugging Face)
+- Torch
+- Pandas
+- SentencePiece
 
----
+## 📦 Setup
 
-## 📦 Installation
+### 1) Clone
 
-### 1. Clone the Repository
 ```bash
 git clone https://github.com/Sam-Wadmare/smart-aptitude-generator.git
 cd smart-aptitude-generator
+```
+
+### 2) Create virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+```
+
+### 3) Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## ▶️ Run the app
+
+```bash
+python app.py
+```
+
+Open: `http://127.0.0.1:5000`
+
+## 🧪 Run tests
+
+```bash
+pytest
+```
+
+## 📁 Project structure
+
+- `app.py` — Flask app factory, routes, dataset/model setup.
+- `templates/index.html` — main UI template.
+- `static/script.js` — frontend interaction and rendering logic.
+- `clean_general_aptitude_dataset.csv` — source aptitude dataset.
+- `tests/test_app.py` — route and data schema tests.
+
+## ⚠️ Notes
+
+- First startup can be slower because the model may download/load.
+- `/generate` returns `question`, `options`, and `answer` in JSON.
